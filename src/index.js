@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { IndeterminateComponent } from './ReactWorkTags'
 
 
 const reducer = (state, action) => {
@@ -23,5 +24,7 @@ ReactDOM.render(<Counter />, document.getElementById('root'))
 
 // Fiber
 const workInProgress = {
-  tag: 2, // Fiber的类型
+  tag: IndeterminateComponent, // Fiber的类型,
+  type: Counter,
+  alternate: null  // 上一个fiber
 }

@@ -1,5 +1,5 @@
 import { renderWithHooks } from "./ReactFiberHooks";
-import { FunctionComponent, IndeterminateComponent } from "./ReactWorkTags";
+import { FunctionComponent, HostComponent, IndeterminateComponent } from "./ReactWorkTags";
 
 let workInProgress = null
 
@@ -31,6 +31,7 @@ function beginWork (current, workInProgress) {
 
 
 function performUnitOfWork(unitOfWork) {
+  debugger
   var current = unitOfWork.alternate;
   return beginWork(current, unitOfWork)
 }
@@ -47,5 +48,11 @@ export function render(fiber) {
 }
 
 function reconcileChildren(current, workInProgress, children) {
-  
+  let childFiber = {
+    tag: HostComponent,
+    type: children.type,
+    alternate: workInProgress.child
+  }
+
+  workInProgress.child = childFiber
 }
